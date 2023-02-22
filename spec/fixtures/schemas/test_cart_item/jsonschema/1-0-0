@@ -1,0 +1,62 @@
+{
+  "$schema": "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+  "description": "Schema for a cart item entity",
+  "self": {
+    "vendor": "com.evvnt",
+    "name": "test_cart_item",
+    "format": "jsonschema",
+    "version": "1-0-0"
+  },
+  "type": "object",
+  "properties": {
+    "type": {
+      "description": "The item type",
+      "enum": [
+        "event_ticket",
+        "customer_donation",
+        "customer_membership",
+        "gift_card",
+        "ticket_voucher",
+        "product"
+      ]
+    },
+    "item_id": {
+      "description": "The unique identifier for the item according to the core platform",
+      "type": "string"
+    },
+    "item_name": {
+      "description": "The name of the item",
+      "type": "string"
+    },
+    "quantity": {
+      "description": "The quantity of the item",
+      "type": "integer"
+    },
+    "price": {
+      "description": "The price of the item",
+      "type": "number"
+    },
+    "category": {
+      "description": "The category of the item",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sku": {
+      "description": "The SKU of the item",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "type",
+    "item_id",
+    "item_name",
+    "quantity",
+    "price"
+  ],
+  "additionalProperties": false
+}

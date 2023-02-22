@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/dsctl'
+
+raise 'action is not set' unless ARGV[0]
+raise 'Schemas path is not set' unless ARGV[1]
+
+schemas_lookup_path = "#{ARGV[1]}/**/*"
+
+case ARGV[0]
+when 'validate'
+  Dsctl::Validate.new(schemas_path: schemas_lookup_path).call
+when 'deploy'
+  Dsctl::Deploy.new(schemas_path: schemas_lookup_path).call
+else
+  raise "Unknown command #{ARGV[0]}"
+end

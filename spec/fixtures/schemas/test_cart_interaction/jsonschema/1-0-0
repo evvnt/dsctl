@@ -1,0 +1,56 @@
+{
+  "$schema": "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+  "description": "Schema for an cart interaction event",
+  "self": {
+    "vendor": "com.evvnt",
+    "name": "test_cart_interaction",
+    "format": "jsonschema",
+    "version": "1-0-0"
+  },
+  "type": "object",
+  "properties": {
+    "interaction_type": {
+      "description": "The type of interaction",
+      "enum": [
+        "open_cart",
+        "close_cart",
+        "add_item",
+        "remove_item",
+        "checkout",
+        "expired"
+      ]
+    },
+    "transaction_id": {
+      "description": "The transaction id. It should be blank until the checkout event",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "transaction_subtotal": {
+      "description": "It should only include the subtotal of the items in the cart including discount. Do not include shipping, tax, or other fees.",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "transaction_fees": {
+      "description": "It should only include the fees of the items in the cart.",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "transaction_total": {
+      "description": "It should include the total of the items in the cart, including shipping, tax, and other fees.",
+      "type": [
+        "number",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "interaction_type"
+  ],
+  "additionalProperties": false
+}
