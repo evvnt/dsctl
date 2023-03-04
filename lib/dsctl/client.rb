@@ -36,7 +36,7 @@ module Dsctl
     def deploy_schema(schema, target_environment:, message:)
       params = {
         message: message,
-        source: 'VALIDATED',
+        source: target_environment == 'PROD' ? 'DEV' : 'VALIDATED',
         target: target_environment,
         vendor: schema.dig('self', 'vendor'),
         name: schema.dig('self', 'name'),
